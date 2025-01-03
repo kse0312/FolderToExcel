@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.ns.foldertoexcel.MainController">
+    <!-- 파일 선택 및 파일 목록 표시 섹션 -->
+    <VBox spacing="20" alignment="CENTER" maxWidth="440">
+        <!-- 폴더 경로 입력 부분 -->
+        <HBox spacing="10" alignment="CENTER">
+            <TextField fx:id="folderPathField" editable="false" promptText="선택한 폴더 경로" prefWidth="300"/>
+            <Button fx:id="folderSelectionButton" text="폴더 경로 선택" onAction="#handleFolderSelection"/>
+        </HBox>
+
+        <!-- 폴더 내 파일 목록 부분 -->
+        <VBox spacing="10" alignment="CENTER">
+            <Label text="폴더 내 파일 목록"/>
+            <!-- ListView의 너비를 '100%'로 설정하여 상위 VBox와 동일한 크기로 맞춤 -->
+            <ListView fx:id="fileListView" maxHeight="200" />
+        </VBox>
+    </VBox>
+
+    <!-- 엑셀 설정 섹션 -->
+    <VBox spacing="20" alignment="CENTER" maxWidth="440">
+        <!-- 상단에 구분선 추가 -->
+        <Separator />
+        <GridPane alignment="CENTER" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml">
+            <!-- 엑셀 파일명 -->
+            <Label text="엑셀 파일명:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+            <TextField fx:id="excelFileNameField" promptText="엑셀 파일명을 입력하세요" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.columnSpan="3" prefWidth="300" />
+
+            <!-- 시작 행 -->
+            <Label text="시작 행:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+            <ComboBox fx:id="startRowComboBox" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="100" />
+
+            <!-- 시작 열 -->
+            <Label text="시작 열:" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+            <ComboBox fx:id="startColumnComboBox" GridPane.rowIndex="1" GridPane.columnIndex="3" prefWidth="100" />
+
+            <!-- 다운로드 위치 -->
+            <Label text="다운로드 위치:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+            <TextField fx:id="downloadPathField" editable="false" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.columnSpan="3" prefWidth="300" />
+        </GridPane>
+
+        <!-- 엑셀로 내보내기 버튼 -->
+        <HBox spacing="10" alignment="CENTER">
+            <Button text="엑셀로 내보내기" onAction="#handleExportToExcel"/>
+        </HBox>
+    </VBox>
+</VBox>
